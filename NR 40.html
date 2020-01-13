@@ -1,0 +1,514 @@
+<!-- AWP_In_Variable Name='"Webdings".myInt' -->
+<!-- AWP_In_Variable Name='"Webdings".Web_daling' -->
+<!-- AWP_In_Variable Name='"Webdings".Web_uitdelen' -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        
+  
+       
+
+
+        $(document).ready(function () {
+            $('p3').hide();
+            $('p').fadeTo(1, 0);
+            $.ajaxSetup({ cache: false });
+            setInterval(function () {
+                $.get("SpelerInt.htm", function (result) {
+                    $('#myInt').text(result);
+                    $.get("daling.htm",function(result){
+                        $('#Web_daling').text(result.trim());   });
+                        $.get("uitdelen.htm",function(result){
+                            $('#Web_uitdelen').text(result.trim());
+                        });
+                });
+            }, 1000);
+
+
+
+            $("button").click(function (e) {
+                
+
+                url="SpelerInt.htm";
+                name='"Webdings".myInt';
+                val=$('input[id=setvar]').val();
+                sdata = escape(name) + '=' + val;
+
+                if (setvar.value > 3) {
+                    alert("Geef een getal in van 1 tot 3!");
+                } else {
+
+                    if (setvar.value < 1) {
+                        alert("Geef een getal in van 1 tot 3!");
+                    } else {
+
+                        var winner = $('input[id=setvar]').val();
+
+                        $.post(url, sdata, function (result) { })
+                        $('button').hide();
+                        $('input').hide();
+                        $('p3').show();
+                        $('p1').hide();
+                        $('p').fadeTo("slow", 1);
+                        $("#winner_id").append(winner)
+                        e.preventDefault();
+
+                    }
+                }
+
+                
+            });
+            
+        });
+        
+        
+       
+
+        
+    </script>
+
+
+
+
+
+<style>
+
+winner{hide:true;}
+
+
+
+/*body {
+  background-color: #47d1da;}*/
+body {
+ /* background-image: url('Red-Casino-Card-Background-Wallpaper.jpg');*/
+   background-color: crimson;
+   background-repeat: no-repeat;
+   background-attachment: fixed; 
+  background-size: cover;
+  }  
+
+p {
+  color: white;
+  font: 400 2.8em/100% Rockwell;
+  text-align: center;}
+p1 {
+  color: white;
+  font: 200 1.5em/150% Rockwell;
+ }
+
+p3 {
+   
+  color: white;
+  font: 200 1.5em/100% Rockwell;
+ }
+ p2 {
+  color: white;
+  font: 50 0.8em/150% Arial;
+ }
+h1 {
+  color: Gold;
+  font: 400 4em/150% Vivaldi;
+  text-align: center;}
+
+
+/* loading dots */
+
+.loading:after {
+  content: ' .';
+  animation: dots 1.2s steps(5, end) infinite;}
+
+@keyframes dots {
+  0%, 20% {
+    color: rgba(0,0,0,0);
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  40% {
+    color: white;
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  60% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 rgba(0,0,0,0);}
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 white;}}     
+	  
+	  
+	  
+	.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  background-color: none; /*#2196F3*/
+  padding: 20px;
+}
+
+.grid-container > div {
+  background-color: rgba(255, 255, 255, 0.1);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}
+
+
+
+.item3 { grid-area: 1 / 1 / 2 / 2; }
+.item4 { grid-area: 1 / 2 / 3 / 4; }
+.item5 { grid-area: 2 / 1 / 3 / 2; }
+
+/*Initialiseren elementen pokertafel*/
+
+.tafelrand{
+            height: 425px;
+            width: 425px;
+            background-color:#3d1f05;
+            border-radius: 50%;
+            position: absolute;
+            top: 215px;
+            left: 1300px;
+            z-index: -2;
+        }
+
+        .tafel{
+            height: 400px;
+            width: 400px;
+            background-color: #325401;
+            border-radius: 50%;
+            position: absolute;
+                top: 227px;
+                left: 1312px;
+                z-index: -1;
+        }
+
+        .Pokerchip_Rood_S1{
+            height: 20px;
+            width: 20px;
+            background-color: #FF0000;
+            border-radius: 50%;
+            position: relative;
+                top: 60px;
+                left: 355px;
+                z-index: 2;
+        }
+
+        @keyframes Chips_R_S1{
+            /*from {top: 60px;}*/
+            
+            50%{ top: -272px;left: 1470px;} 
+            100%{top:-450px; left: 1470px;}
+            
+        }
+
+        .Pokerchip_Groen_S1{
+            height: 20px;
+            width: 20px;
+            background-color: #1ba100;
+            border-radius: 50%;
+            position: relative;
+                top: 40px;
+                left: 310px;
+                z-index: 2;
+        }
+
+        @keyframes Chips_G_S1{
+            /*from {top: 40px;}*/
+            50% {top: -332px; left: 1493px;}
+            100%{top: -450px; left: 1493px;}
+        }
+
+        .Pokerchip_Zwart_S1{
+            height: 20px;
+            width: 20px;
+            background-color: #000103;
+            border-radius: 50%;
+            position: relative;
+                top: 21px;
+                left: 400px;
+                z-index: 2;
+        }
+        @keyframes Chips_Z_S1{
+            /*from {top: 21px;}*/
+             50% {top: -232px; left: 1517px;}
+             100% {top: -410px; left: 1517px;}
+        }
+
+        .Pokerchip_Rood_S2{
+            height: 20px;
+            width: 20px;
+            background-color: #FF0000;
+            border-radius: 50%;
+            position: relative;
+                top: 330px;
+                left: 355px;
+                z-index: 2;
+        }
+
+        @keyframes Chips_R_S2{
+            /*from {top: 330px;}*/
+            50% {top: -292px; left: 1470px;}
+            100% {top: -471px; left : 1470px;}
+        }
+
+        .Pokerchip_Groen_S2{
+            height: 20px;
+            width: 20px;
+            background-color: #1ba100;
+            border-radius: 50%;
+            position: relative;
+                top: 310px;
+                left: 310px;
+                z-index: 2;
+        }
+
+        @keyframes Chips_G_S2{
+           /* from {top: 310px;}*/
+            50% {top: -352px; left: 1493px;}
+            100% {top: -470px; left: 1493px;}
+        }
+        .Pokerchip_Zwart_S2{
+            height: 20px;
+            width: 20px;
+            background-color: #000103;
+            border-radius: 50%;
+            position: relative;
+                top: 290px;
+                left: 400px;
+                z-index: 2;
+        }
+
+        @keyframes Chips_Z_S2{
+            /*from {top: 290px;}*/
+            50% {top: -252px; left: 1517px;}
+            100% {top: -430px; left: 1517px;}
+        }
+
+        @keyframes Speler_1Z{
+          to {top: -500px;}
+          to{left: 1517px;}
+        }
+        
+    .chipZ {
+           height: 20px;
+            width: 20px;
+            background-color: #000103;
+            border-radius: 50%;
+            position: relative;
+                top: -300px;
+                left: 1500px;
+                z-index: 2;
+    }
+    
+    .log {
+        position: fixed;
+        border: 1px solid #000;
+        bottom: 0;
+        right: 0;
+        padding: 5px;
+        width: 50px;
+        height: 50px;
+        font-family: Helvetica;
+        font-size: 11px;
+        background: skyblue;
+        box-shadow: 0 0 20px #000;    }
+    
+    
+    .new_pos {
+        background: #ccc;
+        border: 1px solid #000;
+        padding: 5px;
+        box-shadow: 0 0 20px #555;
+        -webkit-transition: all .2s ease-in;
+        transition: all .2s ease-in;
+    }
+    
+    .new_pos:hover {
+        background: #bbb;
+        box-shadow: 0 0 20px #222;
+    }
+    
+    
+    .new_pos:active {
+        box-shadow: 0 0 20px #000;
+        background: #aaa;
+    }
+    
+    
+    *:focus {
+        outline: none;
+    }
+    
+    
+    body {
+        overflow: hidden;
+        height: 500px;
+    }
+    
+    .new_pos {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        cursor: pointer;
+    }
+
+	  </style>
+	  </head>
+	 
+	 
+	  <body>
+	    
+ <h1><b>Welkom in R&K Casino</b></h1>
+<div class="grid-container">
+ 
+ 
+     <div class="item3"><p1>Wie heeft er gewonnen?</p1><br>
+      
+<input id='setvar'  type="text" placeholder="Typ een nummer van 1-3"/>
+         
+         <button onclick="Collect()">Submit</button>
+         <p3 class="winner">
+         <p3 id="winner_id">Proficiat speler </p3>
+         </p3>
+
+   
+</div>  
+
+  <div class="item4">
+
+      <div class="tafelrand"></div>
+      <div class="tafel"></div>
+      <div id="Pokerchip_Rood_S1"></div>
+      <div id="Pokerchip_Groen_S1"></div>
+      <div id="Pokerchip_Rood_S2"></div>
+      <div id="Pokerchip_Groen_S2"></div>
+      <div id="Pokerchip_Zwart_S2"></div>           
+
+    </div>
+  
+  <div class="item5"><p class="loading">Chips Verzamelen</p></div>
+</div>
+
+<div id="rand_pos_Z1" class="Pokerchip_Zwart_S1"></div>
+<div id="rand_pos_Z2" class="Pokerchip_Zwart_S2"></div>
+<div id="rand_pos_R1" class="Pokerchip_Rood_S1"></div>
+<div id="rand_pos_R2" class="Pokerchip_Rood_S2"></div>
+<div id="rand_pos_G1" class="Pokerchip_Groen_S1"></div>
+<div id="rand_pos_G2" class="Pokerchip_Groen_S2"></div>
+
+
+<script>
+    $(function() {
+        var bodyWidth = document.body.clientWidth
+        var bodyHeight = document.body.clientHeight;
+        var randPosX = Math.floor((Math.random()*300)+1300);
+        var randPosY = Math.floor((Math.random()*-100)-300);
+        var posLog = document.getElementById('pos_log');
+        var posXY = 'x: ' + randPosX + '<br />' + 'y: ' + randPosY;
+    
+    $('#rand_pos_Z1').css('left', randPosX);
+    $('#rand_pos_Z1').css('top', randPosY);
+    
+    posLog.innerHTML = posXY
+    });
+
+    $(function() {
+        var bodyWidth = document.body.clientWidth
+        var bodyHeight = document.body.clientHeight;
+        var randPosX = Math.floor((Math.random()*200)+1300);
+        var randPosY = Math.floor((Math.random()*-100)-300);
+        var posLog = document.getElementById('pos_log');
+        var posXY = 'x: ' + randPosX + '<br />' + 'y: ' + randPosY;
+    
+    $('#rand_pos_Z2').css('left', randPosX);
+    $('#rand_pos_Z2').css('top', randPosY);
+    
+    posLog.innerHTML = posXY
+    });
+
+    $(function() {
+        var bodyWidth = document.body.clientWidth
+        var bodyHeight = document.body.clientHeight;
+        var randPosX = Math.floor((Math.random()*200)+1300);
+        var randPosY = Math.floor((Math.random()*-100)-300);
+        var posLog = document.getElementById('pos_log');
+        var posXY = 'x: ' + randPosX + '<br />' + 'y: ' + randPosY;
+    
+    $('#rand_pos_R1').css('left', randPosX);
+    $('#rand_pos_R1').css('top', randPosY);
+    
+    posLog.innerHTML = posXY
+    });
+
+    $(function() {
+        var bodyWidth = document.body.clientWidth
+        var bodyHeight = document.body.clientHeight;
+        var randPosX = Math.floor((Math.random()*200)+1300);
+        var randPosY = Math.floor((Math.random()*-100)-300);
+        var posLog = document.getElementById('pos_log');
+        var posXY = 'x: ' + randPosX + '<br />' + 'y: ' + randPosY;
+    
+    $('#rand_pos_R2').css('left', randPosX);
+    $('#rand_pos_R2').css('top', randPosY);
+    
+    posLog.innerHTML = posXY
+    });
+
+    $(function() {
+        var bodyWidth = document.body.clientWidth
+        var bodyHeight = document.body.clientHeight;
+        var randPosX = Math.floor((Math.random()*200)+1300);
+        var randPosY = Math.floor((Math.random()*-100)-300);
+        var posLog = document.getElementById('pos_log');
+        var posXY = 'x: ' + randPosX + '<br />' + 'y: ' + randPosY;
+    
+    $('#rand_pos_G1').css('left', randPosX);
+    $('#rand_pos_G1').css('top', randPosY);
+    
+    posLog.innerHTML = posXY
+    });
+
+    $(function() {
+        var bodyWidth = document.body.clientWidth
+        var bodyHeight = document.body.clientHeight;
+        var randPosX = Math.floor((Math.random()*200)+1300);
+        var randPosY = Math.floor((Math.random()*-100)-300);
+        var posLog = document.getElementById('pos_log');
+        var posXY = 'x: ' + randPosX + '<br />' + 'y: ' + randPosY;
+    
+    $('#rand_pos_G2').css('left', randPosX);
+    $('#rand_pos_G2').css('top', randPosY);
+    
+    posLog.innerHTML = posXY
+    });
+</script>
+
+<script>
+
+  includeHTML();
+  
+  function Collect(){
+ 
+  document.getElementById("rand_pos_R1").style.animation = "Chips_R_S1 2s 1s 1";
+  document.getElementById("rand_pos_R1").style.animationFillMode="forwards";
+  document.getElementById("rand_pos_R2").style.animation = "Chips_R_S2 2s 3s 1";
+  document.getElementById("rand_pos_R2").style.animationFillMode="forwards";
+  document.getElementById("rand_pos_G1").style.animation = "Chips_G_S1 2s 5s 1";
+  document.getElementById("rand_pos_G1").style.animationFillMode="forwards";
+  document.getElementById("rand_pos_G2").style.animation = "Chips_G_S2 2s 7s 1";
+  document.getElementById("rand_pos_G2").style.animationFillMode="forwards";
+  document.getElementById("rand_pos_Z1").style.animation = "Chips_Z_S1 2s 9s 1";
+  document.getElementById("rand_pos_Z1").style.animationFillMode="forwards";
+  document.getElementById("rand_pos_Z2").style.animation = "Chips_Z_S2 2s 11s 1";
+  document.getElementById("rand_pos_Z2").style.animationFillMode="forwards";
+ }
+  </script>
+
+</body>
+
+</html>
